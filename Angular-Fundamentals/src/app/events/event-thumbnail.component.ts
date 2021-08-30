@@ -28,7 +28,7 @@ export class EventThumbnailComponent
 
     handleClickMe(){
         console.log('Clicked!!')
-        this.eventClick.emit("Sample data form Child component")
+        this.eventClick.emit(this.event.name)
         
     }
 }
