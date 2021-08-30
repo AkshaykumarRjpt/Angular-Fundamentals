@@ -8,9 +8,9 @@ import { Component } from "@angular/core";
    
     <hr/>
 
-    <event-thumbnail [event]= "Sampleevent" (eventClick)= "handleEventClicked($event)" #thumbnail ></event-thumbnail>
-    <h3>{{thumbnail.templateVariable}}</h3>
-    <button class="btn btn-primary" (click) = "thumbnail.exampleOfTemplateVaraile()"> log me from child component</button>
+    <event-thumbnail [event]= "Sampleevent"  ></event-thumbnail>
+    
+   
 </div>
     `
     
@@ -30,9 +30,4 @@ export class EventsListComponent{
           country: 'England'
         }
     }
-
-    handleEventClicked(data:any){
-        console.log('Recieved in Parent Component', data)
-    }
-
 }
