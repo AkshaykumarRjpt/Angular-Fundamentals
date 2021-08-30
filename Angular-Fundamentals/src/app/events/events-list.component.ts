@@ -8,7 +8,7 @@ import { Component } from "@angular/core";
    
     <hr/>
 
-    <event-thumbnail [event]= "Sampleevent"></event-thumbnail>
+    <event-thumbnail [event]= "Sampleevent" (eventClick)= "handleEventClicked($event)"></event-thumbnail>
 </div>
     `
     
@@ -27,6 +27,10 @@ export class EventsListComponent{
           city: 'London',
           country: 'England'
         }
+    }
+
+    handleEventClicked(data:any){
+        console.log('Recieved in Parent Component', data)
     }
 
 }

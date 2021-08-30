@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+
 
 @Component({
     selector: 'event-thumbnail',
@@ -8,10 +9,13 @@ import { Component, Input } from "@angular/core";
     <div> Date: {{event.date}}</div>
     <div> time: {{event.time}}</div>
     <div> Price: /$ {{event.price}}</div>
-</div>
+
 <div>
    <span>Location:{{event.location.address}}</span>
    <span> {{event.location.city}}, {{event.location.country}}</span>
+</div>
+ <button class="btn btn-primary" (click) ="handleClickMe()">Click me!!</button>
+
 </div>`
 
 })
@@ -19,4 +23,12 @@ export class EventThumbnailComponent
 {
 
     @Input() event:any
+   
+    @Output() eventClick = new EventEmitter();
+
+    handleClickMe(){
+        console.log('Clicked!!')
+        this.eventClick.emit("Sample data form Child component")
+        
+    }
 }
