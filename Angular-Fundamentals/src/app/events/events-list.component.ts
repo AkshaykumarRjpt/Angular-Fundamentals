@@ -8,7 +8,9 @@ import { Component } from "@angular/core";
    
     <hr/>
 
-    <event-thumbnail [event]= "Sampleevent" (eventClick)= "handleEventClicked($event)"></event-thumbnail>
+    <event-thumbnail [event]= "Sampleevent" (eventClick)= "handleEventClicked($event)" #thumbnail ></event-thumbnail>
+    <h3>{{thumbnail.templateVariable}}</h3>
+    <button class="btn btn-primary" (click) = "thumbnail.exampleOfTemplateVaraile()"> log me from child component</button>
 </div>
     `
     

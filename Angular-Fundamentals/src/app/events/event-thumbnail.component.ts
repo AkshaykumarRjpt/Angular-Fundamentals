@@ -23,6 +23,8 @@ export class EventThumbnailComponent
 {
 
     @Input() event:any
+
+    templateVariable:string = "access this property from parent component through Template reference Variable"
    
     @Output() eventClick = new EventEmitter();
 
@@ -30,5 +32,10 @@ export class EventThumbnailComponent
         console.log('Clicked!!')
         this.eventClick.emit(this.event.name)
         
+    }
+
+    exampleOfTemplateVaraile()
+    {
+        console.log("this method can be executed from the parent component through template referece Variable #thumbnail")
     }
 }
