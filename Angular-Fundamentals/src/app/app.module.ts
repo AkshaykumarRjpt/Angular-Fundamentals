@@ -31,7 +31,16 @@ import { EventRouteActivatorService } from './events/event-route-Activator';
     RouterModule.forRoot(appRputes)
      
   ],
-  providers: [EventService, EventRouteActivatorService],
+  providers: [EventService, EventRouteActivatorService,
+  {provide:'canDeactivateCreateEvent', useValue: checkDirtyState}],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(component: CreateEventComponent){
+  if(component.isDirty)
+  {
+    return window.confirm('Are you sure you want to navigate? All unsaved data will be lost')
+  }
+return true;
+}
