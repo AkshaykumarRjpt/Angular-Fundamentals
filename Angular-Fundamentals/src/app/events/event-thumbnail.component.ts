@@ -9,7 +9,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
     <div> Date: {{event.date}}</div>
 
     /** ngClass directive is better if you want to toggle multiple classes */
-    <div [ngClass] = "{green: event?.time === '8:00 am' , bold: event?.time ==='8:00 am'}" 
+    <div [ngClass] = "getStartTimeclass()" 
   
     [ngSwitch]="event?.time" >
     time: {{event.time}} 
@@ -49,5 +49,17 @@ export class EventThumbnailComponent
     exampleOfTemplateVaraile()
     {
         console.log("this method can be executed from the parent component through template referece Variable #thumbnail")
+    }
+
+
+    getStartTimeclass()
+    {
+        const isEarlyStart = this.event && this.event.time === '8:00 am'
+        return {green: isEarlyStart, bold:isEarlyStart} 
+
+        //or
+
+        // if(isEarlyStart)
+        //   return ''green bold'
     }
 }
