@@ -8,8 +8,8 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
     <h2> {{event.name}}</h2>
     <div> Date: {{event.date}}</div>
 
-    /** class binding is good if you want only one class to toggle like below only class green is used */
-    <div [class.green] = "event?.time === '8:00 am'" 
+    /** ngClass directive is better if you want to toggle multiple classes */
+    <div [ngClass] = "{green: event?.time === '8:00 am' , bold: event?.time ==='8:00 am'}" 
   
     [ngSwitch]="event?.time" >
     time: {{event.time}} 
