@@ -7,9 +7,11 @@ import { Component } from "@angular/core";
     <h1> Upcomming Angular Events</h1>
    
     <hr/>
-
-    <event-thumbnail *ngFor="let Sampleevent of Sampleevents" [event]= "Sampleevent"  ></event-thumbnail>
-    
+    <div class="row">
+        <div *ngFor="let Sampleevent of Sampleevents" class="col-md-5">
+            <event-thumbnail  [event]= "Sampleevent"  ></event-thumbnail>
+        </div>
+    </div>
    
 </div>
     `
@@ -324,4 +326,4 @@ export class EventsListComponent{
           
         ]
     }];
-}
+} 

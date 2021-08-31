@@ -7,7 +7,16 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
     <div class="well hoverwell thumbnail">
     <h2> {{event.name}}</h2>
     <div> Date: {{event.date}}</div>
-    <div> time: {{event.time}}</div>
+
+    /** class binding is good if you want only one class to toggle like below only class green is used */
+    <div [class.green] = "event?.time === '8:00 am'" 
+  
+    [ngSwitch]="event?.time" >
+    time: {{event.time}} 
+        <span *ngSwitchCase = "'8:00 am'">(Early Start)</span> 
+        <span *ngSwitchCase= "'10:00 am'">(Late Start)</span>
+        <span *ngSwitchDefault>(Normal start)</span>
+    </div>
     <div> Price: \$ {{event.price}}</div>
 
 <div>
@@ -15,7 +24,10 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
    <span class = "pad-left"> {{event.location?.city}}, {{event.location?.country}}</span>
 </div>
 </div>`,
-styles: [ `.pad-left {margin-left: 10px;}
+styles: [ `
+.green{ color: #003300 !important}
+.bold{font-weight: bold;}
+.pad-left {margin-left: 10px;}
 .well div {color : #bbb;}`]
 
 })
