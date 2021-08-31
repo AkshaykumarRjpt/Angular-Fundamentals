@@ -9,7 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { RouterModule } from '@angular/router';
-import { appRputes } from 'src/routes';
+import { appRoutes } from 'src/routes';
 import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/404.comonent';
 import { EventRouteActivatorService } from './events/event-route-Activator';
@@ -29,7 +29,7 @@ import { EventListResolver } from './events/events-list-resolver.service';
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-right' }),
-    RouterModule.forRoot(appRputes)
+    RouterModule.forRoot(appRoutes)
      
   ],
   providers: [EventService, EventRouteActivatorService,
