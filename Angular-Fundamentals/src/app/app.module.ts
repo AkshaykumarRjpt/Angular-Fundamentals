@@ -13,6 +13,7 @@ import { appRputes } from 'src/routes';
 import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/404.comonent';
 import { EventRouteActivatorService } from './events/event-route-Activator';
+import { EventListResolver } from './events/events-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EventRouteActivatorService } from './events/event-route-Activator';
      
   ],
   providers: [EventService, EventRouteActivatorService,
-  {provide:'canDeactivateCreateEvent', useValue: checkDirtyState}],
+  {provide:'canDeactivateCreateEvent', useValue: checkDirtyState},
+  EventListResolver],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }

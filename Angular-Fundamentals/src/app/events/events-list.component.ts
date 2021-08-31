@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ToastrComponentlessModule } from "ngx-toastr";
 import { EventService } from "./shared/event.service";
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class EventsListComponent implements OnInit{
 
     Sampleevents:any[] = []
 
-    constructor(private eventService: EventService, private toastr: ToastrService)
+    constructor(private eventService: EventService, private toastr: ToastrService, private route:ActivatedRoute)
     {
         
     }
@@ -36,6 +37,6 @@ export class EventsListComponent implements OnInit{
 
 
     ngOnInit(){
-        this.Sampleevents = this.eventService.getEvents()
+        this.Sampleevents = this.route.snapshot.data['retrievedevents']
     }
 } 
