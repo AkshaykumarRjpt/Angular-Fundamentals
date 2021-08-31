@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
     <h2> {{event.name}}</h2>
     <div> Date: {{event.date}}</div>
 
-    /** ngClass directive is better if you want to toggle multiple classes */
+    <!-- ngClass directive is better if you want to toggle multiple classes */ -->
     <div [ngClass] = "getStartTimeclass()" 
   
     [ngSwitch]="event?.time" >
