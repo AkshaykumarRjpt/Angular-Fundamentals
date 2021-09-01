@@ -3,6 +3,7 @@ import { ToastrComponentlessModule } from "ngx-toastr";
 import { EventService } from "./shared/event.service";
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from "@angular/router";
+import { IEvent } from "./shared";
 
 
 @Component({
@@ -22,7 +23,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class EventsListComponent implements OnInit{
 
-    Sampleevents:any[] = []
+    Sampleevents:IEvent[] = []
 
     constructor(private eventService: EventService, private toastr: ToastrService, private route:ActivatedRoute)
     {

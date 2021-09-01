@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { isEmpty } from "rxjs/operators";
+import { IEvent } from "./shared";
 
 
 @Component({
@@ -34,8 +36,8 @@ styles: [ `
 export class EventThumbnailComponent
 {
 
-    @Input() event:any
-
+    @Input() event!:IEvent  
+    
     templateVariable:string = "access this property from parent component through Template reference Variable"
    
     @Output() eventClick = new EventEmitter();
