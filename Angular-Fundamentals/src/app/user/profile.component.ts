@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   profileForm!:FormGroup
  
   ngOnInit(): void {
-    this.firstname = new FormControl(this.auth.currentUser.firstName, Validators.required)
+    this.firstname = new FormControl(this.auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
     this.lastname = new FormControl(this.auth.currentUser.lastName, Validators.required)
 
     this.profileForm = new FormGroup ({

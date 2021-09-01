@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { Error404Component } from './errors/404.comonent';
-
+import { FormsModule } from "@angular/forms";
 import {
   EventsListComponent,
   EventListResolver,
@@ -33,7 +33,8 @@ import { AuthService } from './user/auth.service';
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-right' }),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
      
   ],
   providers: [EventService, EventRouteActivatorService,
