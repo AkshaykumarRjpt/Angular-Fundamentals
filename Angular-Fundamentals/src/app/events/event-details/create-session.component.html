@@ -41,11 +41,11 @@
           <option value="Advanced">Advanced</option>
         </select>
       </div>
-      <div class="form-group"  [ngClass]="{'error': abstract.invalid}">
+      <div class="form-group"  [ngClass]="{'error': abstract.invalid && abstract.dirty}">
         <label for="abstract">Abstract:</label>
-        <em *ngIf= "abstract.invalid && abstract.dirty">Required</em>
-        <em *ngIf= "abstract.invalid && abstract.dirty && abstract.errors?.maxlenght">Cannot exceed 400 characters</em>
-        <em *ngIf= "abstract.invalid && abstract.dirty">Restricted words found</em>
+        <em *ngIf= "abstract.invalid && abstract.errors?.required && abstract.dirty">Required</em>
+        <em *ngIf= "abstract.invalid && abstract.dirty && abstract.errors?.maxlength">Cannot exceed 400 characters</em>
+        <em *ngIf= "abstract.invalid && abstract.dirty && abstract.errors?.restrictedWords">Restricted words found : {{abstract?.errors?.restrictedWords}}</em>
         <textarea 
        
         formControlName="abstract" id="abstract" rows=3 class="form-control" placeholder="abstract..."></textarea>

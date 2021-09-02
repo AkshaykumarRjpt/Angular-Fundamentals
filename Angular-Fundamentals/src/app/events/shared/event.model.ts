@@ -11,11 +11,11 @@ location?: {
     country: string
 },
 onlineUrl?: string,
-sessions: Isession[]
+sessions: ISession[]
 
 }
 
-export interface Isession{
+export interface ISession{
 
     id: number,
     name: string,

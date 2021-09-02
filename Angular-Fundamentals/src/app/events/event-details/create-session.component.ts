@@ -1,6 +1,7 @@
+import { invalid } from "@angular/compiler/src/render3/view/util";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-
+import { ISession } from "../index";
 @Component({
     templateUrl:'./create-session.component.html',
     styles: [`
@@ -29,7 +30,7 @@ export class CreateSessionComponent implements OnInit{
         this.duration = new FormControl('', Validators.required)
         this.level = new FormControl('', Validators.required)
         this.abstract = new FormControl('', [Validators.required, 
-            Validators.maxLength(400), ])
+            Validators.maxLength(400), this.restrictedWords(['chutiya','gaandu'])]);
 
         this.formgroup = new FormGroup({
 
@@ -41,7 +42,31 @@ export class CreateSessionComponent implements OnInit{
         })
     }
 
-    saveSession(fromValues:any){
-        console.log(fromValues)
+    restrictedWords(words: string[])  {
+    return (control:FormControl):{[key:string]: any } | null =>{
+        if(!words) return null
+
+        var invalidWords = words
+        .map(w => control.value.includes(w) ? w : null)
+        .filter(w => w != null)
+
+        return invalidWords && invalidWords.length>0 
+        ? { 'restrictedWords':invalidWords.join(',')}
+        : null
+    }
+}
+
+    saveSession(formValues:any){
+        var session:ISession= {
+            id: 0,
+            name:formValues.name,
+            duration: +formValues.duration,
+            level: formValues.level,
+            presenter:formValues.presenter,
+            abstract:formValues.abstract,
+            voters:[]        
+        }
+
+        console.log(session)
     }
 }
