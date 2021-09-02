@@ -1,8 +1,11 @@
 import { invalid } from "@angular/compiler/src/render3/view/util";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+
 import { ISession } from "../index";
 @Component({
+    selector:'create-session',
     templateUrl:'./create-session.component.html',
     styles: [`
   em {float:right; color:#E05C65; padding-left:10px}
@@ -16,8 +19,13 @@ import { ISession } from "../index";
 })
 export class CreateSessionComponent implements OnInit{
     
-    formgroup!: FormGroup
+    constructor(private route: Router){
 
+    }
+
+    formgroup!: FormGroup
+    @Output() newsession = new EventEmitter<ISession>();
+    @Output() cancelAddSession = new EventEmitter();
     name!:FormControl
     presenter!:FormControl
     duration!:FormControl
@@ -57,7 +65,7 @@ export class CreateSessionComponent implements OnInit{
 }
 
     saveSession(formValues:any){
-        var session:ISession= {
+        let session= {
             id: 0,
             name:formValues.name,
             duration: +formValues.duration,
@@ -66,7 +74,12 @@ export class CreateSessionComponent implements OnInit{
             abstract:formValues.abstract,
             voters:[]        
         }
-
+        this.newsession.emit(session);
         console.log(session)
+    }
+
+    onCancel()
+    {
+        this.cancelAddSession.emit()
     }
 }

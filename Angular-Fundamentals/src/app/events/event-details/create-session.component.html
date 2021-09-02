@@ -51,6 +51,6 @@
         formControlName="abstract" id="abstract" rows=3 class="form-control" placeholder="abstract..."></textarea>
       </div>
       <button type="submit" [disabled]="formgroup.invalid"  class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-default">Cancel</button>
+      <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
     </form>
   </div>
